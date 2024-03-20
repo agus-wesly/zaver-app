@@ -14,14 +14,13 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { ROUTE_NAVIGATION_LIST } from '../constant'
 import { Calendar } from '@/components/ui/calendar'
-import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { CalendarIcon } from 'lucide-react'
 
 export function Component() {
   const navigate = useNavigate()
   const location = useLocation()
-  const [date, setDate] = useState<Date | undefined>(new Date())
+  // const [date, setDate] = useState<Date | undefined>(new Date())
 
   return (
     <>

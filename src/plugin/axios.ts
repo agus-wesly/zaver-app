@@ -1,6 +1,5 @@
 import _axios from 'axios'
 
-// @ts-expect-error
 const BASE_URL = 'https://api.thekuasar.com'
 
 export const axios = _axios.create({

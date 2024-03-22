@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import useRefreshToken from '@/features/auth/use-refresh-token'
 import { useAuth } from '@/features/auth/use-auth'
-import { Navbar } from '@/layout/require-auth'
+import { Navbar } from '@/layout/main-layout'
 
 function RootLayout() {
   const [isLoadingApp, setIsLoadingApp] = useState(false)

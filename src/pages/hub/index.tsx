@@ -25,7 +25,7 @@ export function Component() {
   const activeTopic = 'All'
 
   return (
-    <div className="w-full flex flex-col gap-3 h-full">
+    <div className="w-full flex flex-col gap-3">
       <div className="flex justify-between items-center mb-3">
         <h1 className="text-2xl font-semibold">Hub</h1>
 
@@ -37,12 +37,12 @@ export function Component() {
         </Link>
       </div>
 
-      <ul className="flex gap-3 items-center w-full overflow-x-auto py-2 overflow-y-hidden">
+      <ul className="flex gap-3 items-center w-full overflow-x-auto pb-1 overflow-y-hidden sticky top-0 z-[7] bg-white">
         {TOPIC.map((item) => (
           <li key={item}>
             <Button
               variant={'secondary'}
-              className={cn('h-min p-2 rounded-full font-medium', {
+              className={cn('p-2 rounded-full font-medium', {
                 'bg-ternary text-ternary-foreground': activeTopic === item,
               })}
             >
@@ -52,7 +52,7 @@ export function Component() {
         ))}
       </ul>
 
-      <div className="flex flex-col gap-4 h-full overflow-y-scroll pb-4">
+      <div className="flex flex-col gap-4 pb-4">
         <HubCard />
         <HubCard />
         <HubCard />
@@ -63,8 +63,8 @@ export function Component() {
       </div>
 
       <Link
-        to={'create'}
-        className="rounded-full bg-primary flex items-center justify-center text-background p-0 fixed bottom-24 right-4 size-14 shadow-sm"
+        to={'add'}
+        className="rounded-full bg-primary flex items-center justify-center text-background p-0 fixed bottom-24 right-4 size-14 shadow-sm z-[5]"
       >
         <PencilIcon />
       </Link>
@@ -79,13 +79,15 @@ function HubCard() {
   const authorProfile =
     'https://storage.googleapis.com/zaver-prod/1702535438887-4553ced7-9710-4b82-be23-1af4d834d653.jpeg'
 
+  const hubId = 'a3402-dqeoopaASSS'
+
   return (
-    <article className="border rounded-xl p-3 flex flex-col gap-3">
+    <article className="border rounded-xl p-3 flex flex-col gap-3 relative">
       <div className="flex justify-between">
-        <div className="flex gap-3 flex-1 items-center">
+        <div className="flex gap-3 flex-1 items-center relative z-[3]">
           <img
             src={authorProfile}
-            className="size-8 object-cover rounded-full"
+            className="size-8 object-cover rounded-full cursor-pointer"
           />
 
           <div className="flex flex-col gap-1">
@@ -117,7 +119,7 @@ function HubCard() {
         architecto?
       </p>
 
-      <div className="flex justify-between">
+      <div className="flex justify-between relative z-[3]">
         <div className="flex gap-6">
           <div className="flex gap-2 items-center text-muted-foreground">
             <button>
@@ -143,6 +145,8 @@ function HubCard() {
           </Button>
         ))}
       </div>
+
+      <Link to={hubId} className="absolute inset-0 z-[2]" />
     </article>
   )
 }

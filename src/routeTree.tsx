@@ -19,6 +19,7 @@ export const router = createBrowserRouter([
             path: 'money',
             lazy: () => import('./pages/money/layout.tsx'),
             children: [
+              { index: true, lazy: () => import('./pages/money/index.tsx') },
               {
                 path: 'goals',
                 lazy: () => import('./pages/money/goals/index.tsx'),
@@ -47,7 +48,10 @@ export const router = createBrowserRouter([
           },
           {
             path: 'hub',
-            lazy: () => import('./pages/hub/index.tsx'),
+            lazy: () => import('./pages/hub/layout.tsx'),
+            children: [
+              { index: true, lazy: () => import('./pages/hub/index.tsx') },
+            ],
           },
           {
             path: 'chat',

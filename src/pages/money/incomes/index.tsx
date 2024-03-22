@@ -110,7 +110,7 @@ function FilterDateModal() {
         <div className="flex justify-between gap-1">
           {FILTER_RANGE.map((item) => (
             <Button
-              className={cn('w-fit p-3 rounded-full font-medium', {
+              className={cn('w-fit p-2 rounded-full font-medium', {
                 'bg-accent text-primary': item.value === selectedRange,
               })}
               key={item.value}

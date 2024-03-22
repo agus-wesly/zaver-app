@@ -24,7 +24,7 @@ export function Component() {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center px-4">
         <Select
           value={location.pathname}
           onValueChange={(val) => navigate(val)}
@@ -53,8 +53,8 @@ export function Component() {
         </Popover>
       </div>
 
-      <div className="flex-1 h-full overflow-y-scroll">
-        <div>Content</div>
+      <div className="flex-1 px-6 overflow-auto h-full w-full mt-8">
+        <div>Map component here</div>
       </div>
     </>
   )

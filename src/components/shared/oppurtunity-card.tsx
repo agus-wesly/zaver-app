@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-export function OppurtunityCard({ className }: { className: string }) {
+export function OppurtunityCard({ className }: { className?: string }) {
   return (
     <div
       className={cn(

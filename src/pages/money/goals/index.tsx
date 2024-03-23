@@ -17,7 +17,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ROUTE_NAVIGATION_LIST } from '../constant'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
-import { CalendarIcon, ChevronRight } from 'lucide-react'
+import { CalendarIcon } from 'lucide-react'
 import { OppurtunityCard } from '@/components/shared/oppurtunity-card'
 
 export function Component() {

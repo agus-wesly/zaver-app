@@ -40,7 +40,7 @@ export function Component() {
         <Button
           type="button"
           variant={'outline'}
-          className="self-start size-16 p-0 rounded-xl shadow-none"
+          className="self-start size-16 p-0 rounded-xl shadow-none hover:text-foreground"
         >
           <Plus className="size-8" />
         </Button>
@@ -91,7 +91,8 @@ function DrawerTags() {
               key={tag}
               variant="secondary"
               className={cn('rounded-full', {
-                'bg-ternary text-ternary-foreground': tag === 'Deals',
+                'bg-ternary text-ternary-foreground hover:bg-ternary':
+                  tag === 'Deals',
               })}
             >
               #{tag}

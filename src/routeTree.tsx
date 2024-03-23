@@ -83,6 +83,11 @@ export const router = createBrowserRouter([
             path: '/hub/add',
             lazy: () => import('./pages/hub/add/index.tsx'),
           },
+
+          {
+            path: '/oppurtunities/:id',
+            lazy: () => import('./pages/oppurtunities/[id]/index.tsx'),
+          },
         ],
       },
 

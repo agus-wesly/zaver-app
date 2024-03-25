@@ -12,7 +12,6 @@ function RootLayout() {
   const [isLoadingApp, setIsLoadingApp] = useState(false)
   const { refresh } = useRefreshToken()
   const user = useAuth((state) => state.user)
-
   useEffect(() => {
     const verifyRefreshToken = async () => {
       try {

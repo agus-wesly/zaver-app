@@ -11,11 +11,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-import { ROUTE_NAVIGATION_LIST } from '../constant'
 import { Calendar } from '@/components/ui/calendar'
 import { Button } from '@/components/ui/button'
 import { CalendarIcon } from 'lucide-react'
+
+import { MapComponent } from './map-component'
+import { ROUTE_NAVIGATION_LIST } from '../constant'
 
 export function Component() {
   const navigate = useNavigate()
@@ -54,7 +55,7 @@ export function Component() {
       </div>
 
       <div className="flex-1 px-6 overflow-auto h-full w-full mt-8">
-        <div>Map component here</div>
+        <MapComponent />
       </div>
     </>
   )

@@ -88,6 +88,14 @@ export const router = createBrowserRouter([
             path: '/oppurtunities/:id',
             lazy: () => import('./pages/oppurtunities/[id]/index.tsx'),
           },
+          {
+            path: 'providers',
+            lazy: () => import('./pages/providers/index.tsx'),
+          },
+          {
+            path: 'privacy-policy',
+            lazy: () => import('./pages/privacy-policy/index.tsx'),
+          },
         ],
       },
 

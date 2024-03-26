@@ -67,7 +67,7 @@ export function Component() {
 
         <Button
           onClick={toggleDrawer}
-          className="bg-[#f5d8cd] text-primary font-semibold shadow-none"
+          className="bg-[#f5d8cd] hover:bg-[#f5d8cd] text-primary font-semibold shadow-none"
         >
           Log expense
         </Button>

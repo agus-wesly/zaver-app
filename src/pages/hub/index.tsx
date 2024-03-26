@@ -64,7 +64,7 @@ export function Component() {
 
       <Link
         to={'add'}
-        className="rounded-full bg-primary flex items-center justify-center text-background p-0 fixed bottom-24 right-4 size-14 shadow-sm z-[5]"
+        className="rounded-full bg-primary flex items-center justify-center text-background p-0 sticky bottom-4 right-0 self-end size-14 shadow-sm z-[5]"
       >
         <PencilIcon />
       </Link>
@@ -138,6 +138,7 @@ function HubCard() {
 
         {tags.map((tag) => (
           <Button
+            key={tag}
             variant={'secondary'}
             className={cn('h-min p-1 text-xs rounded-full font-medium')}
           >

@@ -54,7 +54,7 @@ export function Component() {
         </Popover>
       </div>
 
-      <div className="flex-1 px-6 overflow-auto h-full w-full mt-8">
+      <div className="flex-1 overflow-auto h-full w-full mt-4">
         <MapComponent />
       </div>
     </>

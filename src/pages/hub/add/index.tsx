@@ -67,7 +67,7 @@ export function Component() {
 function DrawerTags() {
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger asChild>
         <button type="button" className="flex gap-4 items-center self-start">
           <Tag className="size-5 text-muted-foreground" />
 

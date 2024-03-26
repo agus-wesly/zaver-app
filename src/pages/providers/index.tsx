@@ -9,13 +9,15 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export function Component() {
+  const navigate = useNavigate()
+
   return (
     <div className="px-4 pt-5 h-screen overflow-y-auto flex flex-col gap-6">
       <div className="flex justify-between items-center">
-        <button>
+        <button onClick={() => navigate(-1)}>
           <ArrowLeft />
         </button>
 

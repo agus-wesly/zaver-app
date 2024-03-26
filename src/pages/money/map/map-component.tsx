@@ -13,7 +13,6 @@ export function MapComponent() {
         disableDefaultUI={true}
         styles={airBnbStyle}
         mapId={'styled1'}
-        zoomControl
       >
         <Marker position={{ lat: -6.914744, lng: 107.60981 }} />
       </Map>

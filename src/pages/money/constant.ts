@@ -1,3 +1,5 @@
+import { endOfWeek, startOfWeek } from 'date-fns'
+
 export const ROUTE_NAVIGATION_LIST = [
   { title: 'Money Map', url: '/money/map' },
   { title: 'Goals', url: '/money/goals' },
@@ -6,3 +8,8 @@ export const ROUTE_NAVIGATION_LIST = [
   { title: 'Income Activities', url: '/money/incomes' },
   { title: 'Expense Activities', url: '/money/expenses' },
 ] as const
+
+export const initialRangeValue = {
+  from: startOfWeek(new Date()),
+  to: endOfWeek(new Date()),
+}

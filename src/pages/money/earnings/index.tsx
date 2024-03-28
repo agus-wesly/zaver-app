@@ -6,22 +6,26 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { useNavigate } from 'react-router-dom'
-import { ROUTE_NAVIGATION_LIST } from '../constant'
-import { Button } from '@/components/ui/button'
-import { CalendarIcon } from '@radix-ui/react-icons'
-import { Calendar } from '@/components/ui/calendar'
+import { ROUTE_NAVIGATION_LIST, initialRangeValue } from '../constant'
+import { CalendarDaily, CalendarWeekly } from '../components/calendar'
+import { DateRange } from 'react-day-picker'
+import { useState } from 'react'
 
 export function Component() {
   const navigate = useNavigate()
+
+  const [rangeSelectedDate, setRangeSelectedDate] = useState<
+    DateRange | undefined
+  >(initialRangeValue)
+  const [singleSelectedDate, setSingleSelectedDate] = useState<
+    Date | undefined
+  >(new Date())
+
+  const [mode, setMode] = useState('weekly')
+
   return (
     <>
       <div className="flex justify-between items-center px-4">
@@ -41,20 +45,21 @@ export function Component() {
           </SelectContent>
         </Select>
 
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant={'outline'}>
-              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="center">
-            <Calendar mode="single" initialFocus />
-          </PopoverContent>
-        </Popover>
+        {mode === 'weekly' ? (
+          <CalendarWeekly
+            range={rangeSelectedDate}
+            setRange={setRangeSelectedDate}
+          />
+        ) : (
+          <CalendarDaily
+            date={singleSelectedDate}
+            setDate={setSingleSelectedDate}
+          />
+        )}
       </div>
 
       <div className="flex-1 overflow-auto h-full w-full mt-8">
-        <Tabs defaultValue="weekly" className="h-full">
+        <Tabs value={mode} onValueChange={setMode} className="h-full">
           <TabsList className="w-full bg-background flex justify-between sticky top-0 z-[2]">
             <TabsTrigger className="flex-1 bg-background" value="weekly">
               Weekly

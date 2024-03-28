@@ -49,6 +49,7 @@ export function MapComponent() {
         >
           {POINTS.map((point) => (
             <MapMarker
+              key={point.id}
               onClick={() => onPointSelected('A')}
               position={{ lat: point.lat, lng: point.lng }}
             >

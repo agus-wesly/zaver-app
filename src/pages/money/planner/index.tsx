@@ -5,21 +5,22 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
 
 import { Button } from '@/components/ui/button'
-import { ROUTE_NAVIGATION_LIST } from '../constant'
+import { ROUTE_NAVIGATION_LIST, initialRangeValue } from '../constant'
 import { useNavigate } from 'react-router-dom'
-import { CalendarIcon, RotateCw } from 'lucide-react'
-import { Calendar } from '@/components/ui/calendar'
+import { RotateCw } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { CalendarWeekly } from '../components/calendar'
+import { useState } from 'react'
+import { DateRange } from 'react-day-picker'
 
 export function Component() {
   const navigate = useNavigate()
+
+  const [rangeSelectedDate, setRangeSelectedDate] = useState<
+    DateRange | undefined
+  >(initialRangeValue)
 
   return (
     <>
@@ -40,16 +41,10 @@ export function Component() {
           </SelectContent>
         </Select>
 
-        <Popover>
-          <PopoverTrigger asChild>
-            <Button variant={'outline'}>
-              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-            </Button>
-          </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="center">
-            <Calendar mode="single" initialFocus />
-          </PopoverContent>
-        </Popover>
+        <CalendarWeekly
+          range={rangeSelectedDate}
+          setRange={setRangeSelectedDate}
+        />
       </div>
 
       <div className="flex-1 bg-muted overflow-auto h-full w-full mt-8">
@@ -98,7 +93,7 @@ export function Component() {
 
         <Button
           variant="ghost"
-          className="flex gap-2 text-primary font-semibold text-base text-center mx-auto h-fit my-5 hover:bg-primary"
+          className="flex gap-2 text-primary font-semibold text-base text-center mx-auto h-fit my-5 hover:text-primary"
         >
           <RotateCw className="size-4" />
           Show new plan

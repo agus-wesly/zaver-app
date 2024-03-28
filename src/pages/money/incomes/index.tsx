@@ -27,6 +27,7 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTE_NAVIGATION_LIST } from '../constant'
 import { ArrowRight, ListFilter } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useState } from 'react'
 
 export function Component() {
   const navigate = useNavigate()
@@ -63,7 +64,7 @@ export function Component() {
           insights.
         </p>
 
-        <Button className="bg-[#f5d8cd] text-primary font-semibold shadow-none">
+        <Button className="bg-[#f5d8cd] text-primary font-semibold shadow-none hover:bg-[#f5d8cd] ">
           Connect Apps
         </Button>
       </div>
@@ -73,34 +74,44 @@ export function Component() {
 
 const FILTER_RANGE = [
   {
-    value: 'all',
+    value: null,
     text: 'All Time',
   },
   {
-    value: 'day',
+    value: 'd',
     text: 'Day',
   },
   {
-    value: 'week',
+    value: 'w',
     text: 'Week',
   },
   {
-    value: 'month',
+    value: 'm',
     text: 'Month',
   },
   {
-    value: 'year',
+    value: 'y',
     text: 'Year',
   },
-]
+] as const
 
 function FilterDateModal() {
-  const selectedRange = 'day'
+  const [selectedRange, setSelectedRange] = useState<
+    null | 'd' | 'w' | 'm' | 'y'
+  >(null)
 
   return (
     <Dialog>
-      <DialogTrigger>
-        <ListFilter className="size-5" />
+      <DialogTrigger asChild>
+        <button className="relative">
+          <ListFilter className="size-5" />
+
+          {selectedRange ? (
+            <span className="absolute bg-red-500 rounded-full flex justify-center items-center text-[14px] w-5 h-5 text-destructive-foreground -top-3 -right-2 pb-1">
+              {selectedRange}
+            </span>
+          ) : null}
+        </button>
       </DialogTrigger>
       <DialogContent className="w-[90%] max-w-[400px] rounded-lg">
         <DialogHeader>
@@ -110,6 +121,7 @@ function FilterDateModal() {
         <div className="flex justify-between gap-1">
           {FILTER_RANGE.map((item) => (
             <Button
+              onClick={() => setSelectedRange(item.value)}
               className={cn('w-fit p-2 rounded-full font-medium', {
                 'bg-accent text-primary': item.value === selectedRange,
               })}
@@ -121,10 +133,13 @@ function FilterDateModal() {
           ))}
         </div>
 
-        <div className="flex justify-between items-center gap-1">
+        <fieldset
+          disabled={!selectedRange}
+          className="flex justify-between items-center gap-1 disabled:cursor-not-allowed"
+        >
           <Popover>
             <PopoverTrigger asChild>
-              <button className="flex-1 border py-2 rounded text-primary text-sm font-semibold">
+              <button className="flex-1 border py-2 rounded text-primary text-sm font-semibold disabled:cursor-not-allowed disabled:text-muted-foreground">
                 2024-03-20
               </button>
             </PopoverTrigger>
@@ -142,7 +157,7 @@ function FilterDateModal() {
 
           <Popover>
             <PopoverTrigger asChild>
-              <button className="flex-1 border py-2 rounded text-primary text-sm font-semibold">
+              <button className="flex-1 border py-2 rounded text-primary text-sm font-semibold disabled:cursor-not-allowed disabled:text-muted-foreground">
                 2024-03-20
               </button>
             </PopoverTrigger>
@@ -155,7 +170,7 @@ function FilterDateModal() {
               />
             </PopoverContent>
           </Popover>
-        </div>
+        </fieldset>
 
         <div className="flex flex-col w-full gap-2">
           <Button className="py-6 font-semibold">Select Date</Button>

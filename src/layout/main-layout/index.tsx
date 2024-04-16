@@ -5,13 +5,16 @@ import {
   ShoppingBag,
   Users,
 } from 'lucide-react'
+import { Suspense } from 'react'
 
 import { NavLink, Outlet } from 'react-router-dom'
 
 export default function MainLayout() {
   return (
     <>
-      <Outlet />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Outlet />
+      </Suspense>
       <Navbar />
     </>
   )

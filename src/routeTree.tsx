@@ -14,6 +14,7 @@ export const router = createBrowserRouter([
         children: [
           {
             element: <MainLayout />,
+
             children: [
               {
                 index: true,
